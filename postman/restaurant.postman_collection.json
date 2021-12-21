@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "d7b66773-e808-44dc-8be0-e16832da4399",
+		"name": "restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAllMenuItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"menu"
+					]
+				},
+				"description": "finds all of the menu items"
+			},
+			"response": []
+		},
+		{
+			"name": "findByFoodCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/menu/items/:P",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"menu",
+						"items",
+						":P"
+					],
+					"variable": [
+						{
+							"key": "P",
+							"value": "Entree"
+						}
+					]
+				},
+				"description": "Finds all menu items by the given food category"
+			},
+			"response": []
+		},
+		{
+			"name": "findByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/:P",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						":P"
+					],
+					"variable": [
+						{
+							"key": "P",
+							"value": "Cheeseburger"
+						}
+					]
+				},
+				"description": "Finds all menu items by the given name"
+			},
+			"response": []
+		},
+		{
+			"name": "findAllMenuItemsByPriceLessThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/searchPrice?searchPrice=10.00",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"searchPrice"
+					],
+					"query": [
+						{
+							"key": "searchPrice",
+							"value": "10.00"
+						}
+					]
+				},
+				"description": "Finds all menu items that are less than the given price"
+			},
+			"response": []
+		},
+		{
+			"name": "findAllMenuItemsByPriceGreaterThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/price?searchPrice=7.00",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"price"
+					],
+					"query": [
+						{
+							"key": "searchPrice",
+							"value": "7.00"
+						}
+					]
+				},
+				"description": "Finds all menu items that are greater than the given price"
+			},
+			"response": []
+		},
+		{
+			"name": "findAllMenuItemsNotInStock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/notInStock",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"notInStock"
+					]
+				},
+				"description": "Finds all of the menu items that are not in stock"
+			},
+			"response": []
+		},
+		{
+			"name": "createShoppingCart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"menuItemId\": 1,\r\n    \"name\": \"Cheeseburger\",\r\n    \"foodCategory\": \"Entree\",\r\n    \"description\": \"A hamburger with cheese\",\r\n    \"price\": 10.00,\r\n    \"inStock\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/shoppingcart",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"shoppingcart"
+					]
+				},
+				"description": "Creates a shopping cart by adding a menu item from the body"
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/shoppingcart",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"shoppingcart"
+					]
+				},
+				"description": "Gets all of the shopping carts"
+			},
+			"response": []
+		},
+		{
+			"name": "getShoppingCart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/shoppingcart/:shoppingCartId",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"shoppingcart",
+						":shoppingCartId"
+					],
+					"variable": [
+						{
+							"key": "shoppingCartId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Gets a specific shopping cart based on the path variable"
+			},
+			"response": []
+		},
+		{
+			"name": "addMenuItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"menuItemId\": 1,\r\n    \"name\": \"Cheeseburger\",\r\n    \"foodCategory\": \"Entree\",\r\n    \"description\": \"A hamburger with cheese\",\r\n    \"price\": 10.00,\r\n    \"inStock\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/shoppingcart/:shoppingCartId/menuitem",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"shoppingcart",
+						":shoppingCartId",
+						"menuitem"
+					],
+					"variable": [
+						{
+							"key": "shoppingCartId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Adds a menu item to a shoppng cart based on the path variable for the shopping cart id and menu item in the request body"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMenuItem",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/shoppingcart/:shoppingCartId/menuitem/:menuItemId",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"shoppingcart",
+						":shoppingCartId",
+						"menuitem",
+						":menuItemId"
+					],
+					"variable": [
+						{
+							"key": "shoppingCartId",
+							"value": "1"
+						},
+						{
+							"key": "menuItemId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Delete's a menu item from a shopping cart based on the path variable shopping cart id and the path variable menu item id"
+			},
+			"response": []
+		}
+	]
+}
